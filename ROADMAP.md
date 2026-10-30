@@ -170,6 +170,7 @@ ni se prouver. Le tableau ci-dessous en identifie treize.
 - Docker Engine : fichier de construction, étiquettes, réseau, volumes, limites de ressources.
 - Cycle de vie d’une image : construction, analyse, publication, suppression.
 - `containerd` et `k3s` : différence de rôle avec Docker, qui reste cantonné à l’intégration continue.
+- Règle du projet : Docker construit et analyse les images, k3s fait tourner le site ; aucun conteneur applicatif n’est lancé par Docker en production.
 - Bonnes pratiques : image minimale, utilisateur non privilégié, aucune donnée dans l’image.
 - Critères de choix : état, performance, portabilité, charge d’exploitation.
 
@@ -340,6 +341,7 @@ ni se prouver. Le tableau ci-dessous en identifie treize.
 - Quorum : majorité, conséquence de la perte de deux nœuds sur trois.
 - Certificats internes : `cert-manager`, autorité interne, renouvellement.
 - Déploiement : mise à jour progressive, retour arrière, limites de ressources.
+- Ports du cluster : 6443 pour l’interface de contrôle, 10250 pour l’agent de nœud, 8472 en UDP pour le réseau interne ; ils s’ouvrent dans UFW et ne s’exposent jamais hors du réseau interne du LAB.
 - Diagnostic : `kubectl`, journaux, événements, état des nœuds.
 - Séparation des rôles : k3s pour le site, Docker pour l’intégration continue.
 
